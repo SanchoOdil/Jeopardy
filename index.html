@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeopardy O'yini</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Jeopardy O'yini</h1>
+    <button id="edit-button">Savollarni Tahrirlash</button>
+    <div class="team-scores">
+      <div class="team" id="team1">
+        <span>Jamoa 1</span>
+        <div class="score">0</div>
+        <div class="controls">
+          <button onclick="addPoints(0)">+</button>
+          <button onclick="subtractPoints(0)">-</button>
+        </div>
+      </div>
+      <div class="team" id="team2">
+        <span>Jamoa 2</span>
+        <div class="score">0</div>
+        <div class="controls">
+          <button onclick="addPoints(1)">+</button>
+          <button onclick="subtractPoints(1)">-</button>
+        </div>
+      </div>
+      <div class="team" id="team3">
+        <span>Jamoa 3</span>
+        <div class="score">0</div>
+        <div class="controls">
+          <button onclick="addPoints(2)">+</button>
+          <button onclick="subtractPoints(2)">-</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="jeopardy-board"></div>
+  </div>
+  <button id="reset-button">O'yinni Qayta Boshlash</button>
+
+  <!-- Pop-up for Answer -->
+  <div id="answer-popup" class="popup">
+    <div class="popup-content">
+      <h2>Savol</h2>
+      <p id="question-text"></p>
+      <div id="answer-section" style="display: none;">
+        <h2>Javob</h2>
+        <p id="answer-text"></p>
+        <div class="popup-buttons">
+          <button id="correct-button">To'g'ri</button>
+          <button id="incorrect-button">Noto'g'ri</button>
+        </div>
+      </div>
+      <button id="reveal-answer-button">Javobni Ko'rsatish</button>
+    </div>
+  </div>
+
+  <!-- Edit Questions Modal -->
+  <div id="edit-modal" class="popup">
+    <div class="popup-content">
+      <h2>Savollarni Tahrirlash</h2>
+      <div id="edit-form">
+        <label for="category">Kategoriya:</label>
+        <select id="category">
+          <option value="0">Ona tili</option>
+          <option value="1">Matematika</option>
+          <option value="2">Musiqa</option>
+          <option value="3">Mantiqiy Savollar</option>
+          <option value="4">O'qish</option>
+        </select>
+        <label for="question">Savol:</label>
+        <input type="text" id="question" placeholder="Savolni kiriting">
+        <label for="answer">Javob:</label>
+        <input type="text" id="answer" placeholder="Javobni kiriting">
+        <label for="value">Qiymati:</label>
+        <input type="number" id="value" placeholder="Qiymatni kiriting">
+        <button id="save-question">Saqlash</button>
+        <button id="close-edit-modal">Yopish</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

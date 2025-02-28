@@ -1,0 +1,361 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #0a0a23;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #1c1c3d, #0a0a23);
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in;
+}
+
+/* Reset Button */
+#reset-button {
+  margin: 20px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 50px; /* Rounded corners */
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#reset-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2980b9, #3498db);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+#reset-button:active {
+  transform: scale(0.95);
+}
+
+/* Ripple Effect */
+#reset-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+#reset-button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: transform 0s, opacity 0s;
+}
+
+/* Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#reset-button.animated {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1 {
+  font-size: 3em;
+  color: #ffcc00;
+  margin: 0;
+}
+
+/* Team Scores */
+.team-scores {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.team {
+  background: linear-gradient(135deg, #2c3e50, #1c1c3d);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 150px;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.team span {
+  font-size: 1.2em;
+  color: #ffcc00;
+}
+
+.team .score {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.team .controls button {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.team .controls button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+/* Jeopardy Board */
+.container {
+  padding: 20px;
+}
+
+#jeopardy-board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.category {
+  background: linear-gradient(135deg, #2c3e50, #1c1c3d);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 200px;
+  animation: fadeIn 1s ease-in;
+}
+
+.category h2 {
+  font-size: 1.5em;
+  margin: 0 0 15px 0;
+  color: #ffcc00;
+}
+
+.question {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+
+
+.question:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+.question.revealed {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.question.answered {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  cursor: default;
+}
+
+/* Pop-up Styles */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+.popup-content h2 {
+  color: #2c3e50;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.popup-content p {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.popup-buttons button {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.popup-buttons button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+#correct-button {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+#incorrect-button {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+#reveal-answer-button {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#reveal-answer-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+/* Used Questions */
+.question.used {
+  background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+  cursor: not-allowed;
+}
+
+/* Edit Button */
+#edit-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#edit-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+/* Edit Modal */
+#edit-modal .popup-content {
+  max-width: 400px;
+  width: 100%;
+}
+
+#edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#edit-form label {
+  font-size: 1.1em;
+  color: #2c3e50;
+}
+
+#edit-form input, #edit-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+#edit-form button {
+  padding: 10px;
+  font-size: 1em;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#edit-form button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2980b9, #3498db);
+}
